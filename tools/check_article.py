@@ -2,6 +2,7 @@
 from pathlib import Path
 import csv
 import re
+from summarize_results import render_outputs
 
 root = Path(__file__).resolve().parents[1]
 text = (root / 'article.tex').read_text(encoding='utf-8-sig')
@@ -9,11 +10,15 @@ keys = re.findall(r'\\bibitem\{([^}]+)\}', text)
 assert len(keys) == len(set(keys)), 'Duplicate bibliography keys'
 citations = {key.strip() for group in re.findall(r'\\cite\{([^}]+)\}', text) for key in group.split(',')}
 assert citations == set(keys), 'Missing or unused bibliography entries'
+required_reading = {'ppo', 'dapg', 'h2o', 'kiselev', 'saveliev', 'robobenchmart'}
+assert required_reading <= citations, 'Missing a source from the supplied literature list'
 labels = re.findall(r'\\label\{([^}]+)\}', text)
 assert len(labels) == len(set(labels)), 'Duplicate labels'
 assert set(re.findall(r'\\(?:eqref|ref)\{([^}]+)\}', text)) <= set(labels), 'Undefined labels'
 for include in re.findall(r'\\input\{([^}]+)\}', text):
     assert (root / include).is_file(), include
+for path, expected in render_outputs().items():
+    assert path.read_text(encoding='utf-8') == expected, f'Stale generated file: {path.name}'
 rows = list(csv.DictReader((root / 'results/evaluations.csv').open(encoding='utf-8')))
 assert len(rows) == 10 and len({r['evaluation_id'] for r in rows}) == 10
 for row in rows:
@@ -29,4 +34,4 @@ assert by_id['separate_approach_249']['stage_transitions'] == str(128 * 32 * 250
 assert by_id['separate_lift_999']['episodes'] == str(19 * 3)
 for forbidden in ('/home/', 'C:\\Users\\', 'PRIVATE KEY', 'ghp_', 'github_pat_'):
     assert forbidden not in text, 'Private environment detail in article'
-print('PASS: six cited references, cross-references, ten evaluation records and transition budgets')
+print(f'PASS: {len(keys)} cited references, required reading, cross-references, generated table and transition budgets')

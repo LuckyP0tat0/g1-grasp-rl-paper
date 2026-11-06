@@ -1,0 +1,24 @@
+% Original explanatory schematic, not a simulator frame or a measured trajectory.
+\begin{tikzpicture}[font=\small,>=Latex,line width=.7pt]
+\fill[black!8] (0,0) rectangle (7.5,-.22);
+\draw (0,0)--(7.5,0);
+\node[anchor=north] at (5.6,-.25) {Полка};
+\draw[fill=black!12] (2.25,0) rectangle (3.05,1.35);
+\draw[fill=black!12] (5.5,0) rectangle (6.3,1.55);
+\node[align=center] at (6.5,2.35) {Соседние\\товары};
+\draw[->] (6.25,1.95)--(5.95,1.6);
+\draw[dashed] (3.65,0) rectangle (4.7,1.3);
+\node[align=center,anchor=north] at (3.95,-.25) {Исходная\\позиция};
+\draw[fill=blue!8] (3.65,1.7) rectangle (4.7,3);
+\draw[fill=blue!18] (3.6,3) rectangle (4.75,3.13);
+\node at (4.17,2.4) {Банка};
+\draw[<->] (5.06,0)--(5.06,1.7);
+\node[anchor=east,fill=white,inner sep=1pt] at (5,1.02) {$h_t$};
+\draw[dotted] (4.7,1.7)--(5.25,1.7);
+\draw[rounded corners=3pt,line width=2pt,black!65]
+ (.15,2.35)--(1.1,2.35)--(1.85,2)--(3.25,2);
+\draw[line width=1.3pt,black!65] (3.25,2)--(3.55,1.85)--(3.8,1.85);
+\draw[line width=1.3pt,black!65] (3.25,2)--(3.45,2.7)--(3.85,2.8);
+\node[align=center] at (1.1,3.05) {Рука и кисть\\G1 / Inspire};
+\draw[->] (4.17,.75)--(4.17,1.5);
+\end{tikzpicture}

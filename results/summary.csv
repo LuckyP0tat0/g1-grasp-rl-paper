@@ -1,0 +1,11 @@
+evaluation_id,successes,episodes,success_rate_percent,stage_transitions,total_transitions_known
+whole_3521,0,64,0.000,,
+separate_approach_249,16,16,100.000,1024000,1024000
+separate_grasp_175,62,64,96.875,,
+separate_lift_999,0,57,0.000,98304000,98304000
+curriculum_v1_approach_10043,0,100,0.000,96000000,96000000
+curriculum_v1_approach_20043,0,100,0.000,96000000,96000000
+curriculum_v2_approach_10043,100,100,100.000,9600000,9600000
+curriculum_v2_approach_20043,100,100,100.000,9600000,9600000
+curriculum_v2_grasp_10043,0,100,0.000,57600000,67200000
+curriculum_v2_grasp_20043,0,100,0.000,57600000,67200000
