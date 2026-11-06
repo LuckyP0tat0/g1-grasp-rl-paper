@@ -1,0 +1,23 @@
+% Original vector diagram; no simulator assets or screenshots.
+\begin{tikzpicture}[
+ font=\small,
+ box/.style={draw=black!65,rounded corners=2pt,align=center,
+ text width=2.1cm,minimum height=0.75cm,inner sep=3pt},
+ flow/.style={-{Latex[length=2mm]},thick},
+ title/.style={anchor=west,font=\small\bfseries}]
+\node[title] at (0,0) {Одна конечная задача};
+\node[box,text width=7.3cm] at (3.7,-.65)
+ {Одна политика: подвести руку, схватить, поднять};
+\node[title] at (0,-1.45) {Отдельные модели};
+\node[box] (a) at (1.1,-2.15) {$\pi_A$: Approach};
+\node[box] (g) at (3.7,-2.15) {$\pi_G$: Grasp};
+\node[box] (l) at (6.3,-2.15) {$\pi_L$: Lift};
+\draw[flow,dashed] (a)--(g);
+\draw[flow,dashed] (g)--(l);
+\node[title] at (0,-2.95) {Одна модель, последовательность целей};
+\node[box] (ca) at (1.1,-3.65) {$\pi_\theta$ при цели A};
+\node[box] (cg) at (3.7,-3.65) {$\pi_\theta$ при цели G};
+\node[box] (cl) at (6.3,-3.65) {$\pi_\theta$ при цели L};
+\draw[flow] (ca)--(cg);
+\draw[flow] (cg)--(cl);
+\end{tikzpicture}
